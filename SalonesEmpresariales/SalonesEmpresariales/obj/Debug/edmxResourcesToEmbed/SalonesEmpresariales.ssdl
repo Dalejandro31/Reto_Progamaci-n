@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SalonesEmpresarialesXYZModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="clientes">
+    <Key>
+      <PropertyRef Name="ID_cliente" />
+    </Key>
+    <Property Name="ID_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre_cliente" Type="varchar" MaxLength="255" />
+    <Property Name="Apellido_cliente" Type="varchar" MaxLength="255" />
+    <Property Name="Telefono_cliente" Type="varchar" MaxLength="255" />
+    <Property Name="Correo_cliente" Type="varchar" MaxLength="255" />
+    <Property Name="Edad_cliente" Type="bigint" />
+    <Property Name="Identificacion_cliente" Type="bigint" />
+    <Property Name="Borrado" Type="bit" />
+    <Property Name="Departamento" Type="int" />
+    <Property Name="Municipio" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="departamentos">
+    <Key>
+      <PropertyRef Name="ID_departamento" />
+    </Key>
+    <Property Name="ID_departamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="codigo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="eventos">
+    <Key>
+      <PropertyRef Name="ID_evento" />
+    </Key>
+    <Property Name="ID_evento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cliente_id" Type="int" />
+    <Property Name="fecha_Evento" Type="varchar" MaxLength="50" />
+    <Property Name="Cantidad_personas" Type="int" />
+    <Property Name="Motivo" Type="varchar" MaxLength="255" />
+    <Property Name="observaciones" Type="varchar" MaxLength="255" />
+    <Property Name="estado" Type="varchar" MaxLength="50" />
+    <Property Name="Borrar" Type="bit" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'SalonesEmpresarialesXYZ.dbo.Motivo_Estado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Motivo_Estado">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_descripcion" Type="varchar" MaxLength="100" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="municipios">
+    <Key>
+      <PropertyRef Name="ID_municipio" />
+    </Key>
+    <Property Name="ID_municipio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="departamento_id" Type="bigint" Nullable="false" />
+    <Property Name="codigo" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <Function Name="pa_Reporte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="SalonesEmpresarialesXYZModelStoreContainer">
+    <EntitySet Name="clientes" EntityType="Self.clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="departamentos" EntityType="Self.departamentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="eventos" EntityType="Self.eventos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="municipios" EntityType="Self.municipios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Motivo_Estado" EntityType="Self.Motivo_Estado" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Motivo_Estado].[ID] AS [ID], 
+    [Motivo_Estado].[ID_descripcion] AS [ID_descripcion], 
+    [Motivo_Estado].[Nombre] AS [Nombre]
+    FROM [dbo].[Motivo_Estado] AS [Motivo_Estado]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

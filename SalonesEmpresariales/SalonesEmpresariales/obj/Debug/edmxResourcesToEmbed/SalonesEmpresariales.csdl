@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SalonesEmpresarialesXYZModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SalonesEmpresarialesXYZEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="departamentos" EntityType="SalonesEmpresarialesXYZModel.departamentos" />
+    <EntitySet Name="municipios" EntityType="SalonesEmpresarialesXYZModel.municipios" />
+    <EntitySet Name="clientes" EntityType="SalonesEmpresarialesXYZModel.clientes" />
+    <EntitySet Name="Motivo_Estado" EntityType="SalonesEmpresarialesXYZModel.Motivo_Estado" />
+    <EntitySet Name="eventos" EntityType="SalonesEmpresarialesXYZModel.eventos" />
+    <FunctionImport Name="pa_Reporte" ReturnType="Collection(SalonesEmpresarialesXYZModel.pa_Reporte_Result)" />
+  </EntityContainer>
+  <EntityType Name="departamentos">
+    <Key>
+      <PropertyRef Name="ID_departamento" />
+    </Key>
+    <Property Name="ID_departamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="codigo" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="municipios">
+    <Key>
+      <PropertyRef Name="ID_municipio" />
+    </Key>
+    <Property Name="ID_municipio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="departamento_id" Type="Int64" Nullable="false" />
+    <Property Name="codigo" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="clientes">
+    <Key>
+      <PropertyRef Name="ID_cliente" />
+    </Key>
+    <Property Name="ID_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre_cliente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido_cliente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono_cliente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Correo_cliente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Edad_cliente" Type="Int64" />
+    <Property Name="Identificacion_cliente" Type="Int64" />
+    <Property Name="Borrado" Type="Boolean" />
+    <Property Name="Departamento" Type="Int32" />
+    <Property Name="Municipio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Motivo_Estado">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="eventos">
+    <Key>
+      <PropertyRef Name="ID_evento" />
+    </Key>
+    <Property Name="ID_evento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cliente_id" Type="Int32" />
+    <Property Name="fecha_Evento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad_personas" Type="Int32" />
+    <Property Name="Motivo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="observaciones" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Borrar" Type="Boolean" />
+  </EntityType>
+  <ComplexType Name="pa_Reporte_Result">
+    <Property Type="Int32" Name="Cliente_id" Nullable="true" />
+    <Property Type="String" Name="Nombre_cliente" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Apellido_cliente" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Telefono_cliente" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="fecha_Evento" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="observaciones" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="Cantidad_personas" Nullable="true" />
+  </ComplexType>
+</Schema>

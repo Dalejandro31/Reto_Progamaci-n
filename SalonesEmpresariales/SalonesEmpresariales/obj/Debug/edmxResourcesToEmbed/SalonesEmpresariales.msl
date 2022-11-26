@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SalonesEmpresarialesXYZModelStoreContainer" CdmEntityContainer="SalonesEmpresarialesXYZEntities">
+    <EntitySetMapping Name="departamentos">
+      <EntityTypeMapping TypeName="SalonesEmpresarialesXYZModel.departamentos">
+        <MappingFragment StoreEntitySet="departamentos">
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="ID_departamento" ColumnName="ID_departamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="municipios">
+      <EntityTypeMapping TypeName="SalonesEmpresarialesXYZModel.municipios">
+        <MappingFragment StoreEntitySet="municipios">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="departamento_id" ColumnName="departamento_id" />
+          <ScalarProperty Name="ID_municipio" ColumnName="ID_municipio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clientes">
+      <EntityTypeMapping TypeName="SalonesEmpresarialesXYZModel.clientes">
+        <MappingFragment StoreEntitySet="clientes">
+          <ScalarProperty Name="Municipio" ColumnName="Municipio" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+          <ScalarProperty Name="Identificacion_cliente" ColumnName="Identificacion_cliente" />
+          <ScalarProperty Name="Edad_cliente" ColumnName="Edad_cliente" />
+          <ScalarProperty Name="Correo_cliente" ColumnName="Correo_cliente" />
+          <ScalarProperty Name="Telefono_cliente" ColumnName="Telefono_cliente" />
+          <ScalarProperty Name="Apellido_cliente" ColumnName="Apellido_cliente" />
+          <ScalarProperty Name="Nombre_cliente" ColumnName="Nombre_cliente" />
+          <ScalarProperty Name="ID_cliente" ColumnName="ID_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Motivo_Estado">
+      <EntityTypeMapping TypeName="SalonesEmpresarialesXYZModel.Motivo_Estado">
+        <MappingFragment StoreEntitySet="Motivo_Estado">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ID_descripcion" ColumnName="ID_descripcion" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="eventos">
+      <EntityTypeMapping TypeName="SalonesEmpresarialesXYZModel.eventos">
+        <MappingFragment StoreEntitySet="eventos">
+          <ScalarProperty Name="Borrar" ColumnName="Borrar" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+          <ScalarProperty Name="Cantidad_personas" ColumnName="Cantidad_personas" />
+          <ScalarProperty Name="fecha_Evento" ColumnName="fecha_Evento" />
+          <ScalarProperty Name="Cliente_id" ColumnName="Cliente_id" />
+          <ScalarProperty Name="ID_evento" ColumnName="ID_evento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="pa_Reporte" FunctionName="SalonesEmpresarialesXYZModel.Store.pa_Reporte">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SalonesEmpresarialesXYZModel.pa_Reporte_Result">
+          <ScalarProperty Name="Cliente_id" ColumnName="Cliente_id" />
+          <ScalarProperty Name="Nombre_cliente" ColumnName="Nombre_cliente" />
+          <ScalarProperty Name="Apellido_cliente" ColumnName="Apellido_cliente" />
+          <ScalarProperty Name="Telefono_cliente" ColumnName="Telefono_cliente" />
+          <ScalarProperty Name="fecha_Evento" ColumnName="fecha_Evento" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="Cantidad_personas" ColumnName="Cantidad_personas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
